@@ -245,19 +245,6 @@ function LazyPig_OnUpdate()
 		ctrlalttime = 0
 		altshifttime = 0
 	end
-		
-	if shift_time == current_time  then	
-		if not (UnitExists("target") and UnitIsUnit("player", "target")) then
-			--
-		elseif not battleframe then
-			battleframe = current_time
-		elseif (current_time - battleframe) > 3 then
-			BattlefieldFrame:Show()
-			battleframe = current_time
-		end
-	elseif battleframe then
-		battleframe = nil
-	end
 			
 	if LPCONFIG.SPECIALKEY then
 		if ctrlstatus and shiftstatus and altstatus and current_time > delayaction then
@@ -988,7 +975,7 @@ function LazyPig_AutoRoll(id)
 		end
 	end
 	
-	if LPCONFIG.AQMOUNT and string.find(zone,"Ahn'Qiraj") then	
+	if LPCONFIG.AQMOUNT and (zone == "Ruins of Ahn'Qiraj" or zone == "Temple of Ahn'Qiraj") then	
 		if string.find(name, "Blue Qiraji Resonating") or string.find(name, "Green Qiraji Resonating") or string.find(name, "Yellow Qiraji Resonating") then
 			cfg = LPCONFIG.AQMOUNT
 			RollOnLoot(id, LPCONFIG.AQMOUNT);
